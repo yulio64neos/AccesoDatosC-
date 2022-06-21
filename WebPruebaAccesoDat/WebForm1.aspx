@@ -15,6 +15,24 @@
             <asp:TextBox ID="TextBox1" runat="server" Width="1075px"></asp:TextBox>
             <br />
             <asp:Button ID="btnProfe" runat="server" Text="Insertar Profesor" OnClick="btnProfe_Click" />
+            <br />
+            <br />
+            <asp:Button ID="btnConsulta" runat="server" Text="Consulta en DataReader" OnClick="btnConsulta_Click" />
+            <br />
+            <br />
+            <asp:ListBox ID="ListBox1" runat="server" Height="154px" Width="807px"></asp:ListBox>
+            <br />
+            <br />
+            <asp:TextBox ID="TextBox2" runat="server" Width="972px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="btnDataSet" runat="server" Text="Consulta Dataset" OnClick="btnDataSet_Click" />
+            <br />
+            <br />
+            <br />
+            <br />
+            <asp:GridView ID="GridView1" runat="server">
+            </asp:GridView>
         </div>
     </form>
 </body>
