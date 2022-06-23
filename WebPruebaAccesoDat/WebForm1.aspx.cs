@@ -46,8 +46,9 @@ namespace WebPruebaAccesoDat
                     camino.Open();
                     bocho = new SqlCommand();
                     bocho.CommandText = "Insert Into Profesor(RegistroEmpleado, Nombre, Ap_pat, Ap_mat, Genero, Categoria, F_edoCivil)" +
-                        "values(245, 'Pedro', 'Martinez', 'Galaviz', 'Masculino', 'PTC', 12);";
+                        "values(245, 'Pedro', 'Martinez', 'Galaviz', 'Masculino', 'PTC', 1);";
                     TextBox1.Text = "Conexión establecida correctamente";
+                    //bocho.CommandText = "Insert Into EstadoCivil( Estado, Extra) values ('Soltero', 'Chido')";
                     bocho.Connection = camino;
                     bocho.ExecuteNonQuery();
                     TextBox1.Text = "Inserción correcta";
@@ -121,13 +122,13 @@ namespace WebPruebaAccesoDat
                     trailer.SelectCommand = bocho;
                     trailer.Fill(cajota);
                     TextBox2.Text = "Consulta correcta en DS";
+                    camino.Close();
                     //Recorrido de los datos
                     if (cajota != null)
                     {
                         GridView1.DataSource = cajota.Tables[0];
                         GridView1.DataBind();
                     }
-                    
                 }
                 catch (Exception a)
                 {
