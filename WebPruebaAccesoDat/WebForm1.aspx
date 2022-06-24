@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    <h2>ADO en el formulario</h2>
     <form id="form1" runat="server">
         <div>
             <h1>Adobo .NET</h1>

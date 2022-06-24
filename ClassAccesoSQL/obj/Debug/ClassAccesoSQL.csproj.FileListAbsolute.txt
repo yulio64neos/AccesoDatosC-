@@ -1,0 +1,6 @@
+C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\ClassAccesoSQL\bin\Debug\ClassAccesoSQL.dll
+C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\ClassAccesoSQL\bin\Debug\ClassAccesoSQL.pdb
+C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\ClassAccesoSQL\obj\Debug\ClassAccesoSQL.csproj.AssemblyReference.cache
+C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\ClassAccesoSQL\obj\Debug\ClassAccesoSQL.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\ClassAccesoSQL\obj\Debug\ClassAccesoSQL.dll
+C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\ClassAccesoSQL\obj\Debug\ClassAccesoSQL.pdb

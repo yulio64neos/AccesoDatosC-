@@ -9,30 +9,30 @@ using System.Data.SqlClient;
 
 namespace ClassAccesoSQL
 {
-    public class ClassAccesoSQL
+    public class miClassAccesoSQL
     {
         private string cadConexion;
         private SqlConnection cnglobal = null;
 
-        public ClassAccesoSQL(string cadenaBD)
+        public miClassAccesoSQL(string cadenaBD)
         {
             cadConexion = cadenaBD;
         }
-        public SqlConnection AbrirConexion(ref string mensaje) // Metodo con parametros de referencia
+        public string AbrirConexion() // Metodo con parametros de referencia
         {
-            SqlConnection conexion1 = new SqlConnection();
-            conexion1.ConnectionString = cadConexion;
+            string mensaje = "";
+            cnglobal.ConnectionString = cadConexion;
             try
             {
-                conexion1.Open();
+                cnglobal.Open();
                 mensaje = "Conexión abierta CORRECTAMENTE";
             }
             catch (Exception r)
             {
-                conexion1 = null; //Devuelve una conexion nula
+                cnglobal = null; //Devuelve una conexion nula
                 mensaje = "Error: " + r.Message;
             }
-            return conexion1;
+            return mensaje;
         }
 
 
@@ -43,9 +43,9 @@ namespace ClassAccesoSQL
             SqlDataAdapter trailer = null;
             DataSet DS_salida = new DataSet();
 
-            using (SqlConnection conAbierta = AbrirConexion(ref mensaje))
+            mensaje = AbrirConexion();
             {
-                if (conAbierta == null)
+                if (cnglobal == null)
                 {
                     mensaje = "No hay conexion a la BD";
                     DS_salida = null;
@@ -54,14 +54,14 @@ namespace ClassAccesoSQL
                 {
                     carrito = new SqlCommand();
                     carrito.CommandText = querySql;
-                    carrito.Connection = conAbierta;
+                    carrito.Connection = cnglobal;
 
                     trailer = new SqlDataAdapter();
                     trailer.SelectCommand = carrito;
 
                     try
                     {
-                        trailer.Fill(DS_salida);
+                        trailer.Fill(DS_salida, "tabla0");
                         mensaje = "Consulta Correcta en DataSet";
                     }
                     catch (Exception a)
@@ -69,21 +69,36 @@ namespace ClassAccesoSQL
                         DS_salida = null;
                         mensaje = "Error!" + a.Message;
                     }
-                    conAbierta.Close();
+                    cnglobal.Close();
+                    cnglobal.Dispose();
+                }
+            }
+            return DS_salida;
+        }
+
+        public void CerrarConexion()
+        {
+            //Verificamos la conexión global
+            if (cnglobal != null)
+            {
+                //Veo si está abierto
+                if (cnglobal.State == ConnectionState.Open)
+                {
+                    //Entonces lo cierro y le hago DISPOSE :V JUAS JUAS
+                    cnglobal.Close();
+                    cnglobal.Dispose();
                 }
             }
             
-            return DS_salida;
         }
 
         public SqlDataReader ConsultarReader(string querySql,  ref string mensaje)
         {
-            SqlConnection conAbierta = null;
             SqlCommand carrito = null;
             SqlDataReader contenedor = null;
 
-            conAbierta = AbrirConexion(ref mensaje);
-            if (conAbierta == null)
+            mensaje = AbrirConexion();
+            if (cnglobal == null)
             {
                 mensaje = "No hay conexion a la BD";
                 contenedor = null;
@@ -92,7 +107,7 @@ namespace ClassAccesoSQL
             {
                 carrito = new SqlCommand();
                 carrito.CommandText = querySql;
-                carrito.Connection = conAbierta;
+                carrito.Connection = cnglobal;
 
                 try
                 {
@@ -113,8 +128,8 @@ namespace ClassAccesoSQL
             SqlCommand carrito = null;
             SqlDataAdapter trailer = null;
             Boolean salida = false;
-
-            if (conAbierta == null)
+            mensaje = AbrirConexion();
+            if (cnglobal == null)
             {
                 mensaje = "No hay conexion a la BD";
                 salida = false;
@@ -123,7 +138,7 @@ namespace ClassAccesoSQL
             {
                 carrito = new SqlCommand();
                 carrito.CommandText = querySql;
-                carrito.Connection = conAbierta;
+                carrito.Connection = cnglobal;
 
                 trailer = new SqlDataAdapter();
                 trailer.SelectCommand = carrito;
@@ -138,15 +153,10 @@ namespace ClassAccesoSQL
                 {
                     mensaje = "Error: " + a.Message;
                 }
-                conAbierta.Close();
-                conAbierta.Dispose();
+                CerrarConexion();
             }
             return salida;
         }
-
-
-
-
 
     }
 }
