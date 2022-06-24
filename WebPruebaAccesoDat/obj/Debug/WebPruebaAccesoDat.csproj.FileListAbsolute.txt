@@ -70,3 +70,5 @@ C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\WebPruebaAccesoDat\obj\Debug\WebP
 C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\WebPruebaAccesoDat\obj\Debug\WebPruebaAccesoDat.csproj.CopyComplete
 C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\WebPruebaAccesoDat\obj\Debug\WebPruebaAccesoDat.dll
 C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\WebPruebaAccesoDat\obj\Debug\WebPruebaAccesoDat.pdb
+C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\WebPruebaAccesoDat\bin\ClassAccesoSQL.dll
+C:\Users\Lenovo_AIO_11\Documents\AccesoDatosC-\WebPruebaAccesoDat\bin\ClassAccesoSQL.pdb

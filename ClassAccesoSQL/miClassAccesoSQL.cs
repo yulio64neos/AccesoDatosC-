@@ -17,6 +17,7 @@ namespace ClassAccesoSQL
         public miClassAccesoSQL(string cadenaBD)
         {
             cadConexion = cadenaBD;
+            cnglobal = new SqlConnection();
         }
         public string AbrirConexion() // Metodo con parametros de referencia
         {

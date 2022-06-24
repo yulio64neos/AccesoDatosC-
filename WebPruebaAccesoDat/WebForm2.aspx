@@ -11,6 +11,7 @@
     <form id="form1" runat="server">
         <asp:Button ID="Button1" runat="server" Text="Consulta simple en el DATASET" OnClick="Button1_Click" />
         <div>
+            <asp:TextBox ID="TextBox1" runat="server" Width="688px"></asp:TextBox>
             <br />
             <asp:GridView ID="GridView1" runat="server">
             </asp:GridView>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -30,7 +31,15 @@ namespace WebPruebaAccesoDat
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            DataSet caja = null;
+            string m = "";
+            caja = objacceso.ConsultaDS("Select * from Profesor", ref m);
+            TextBox1.Text = m;
+            if (caja!= null)
+            {
+                GridView1.DataSource = caja.Tables[0];
+                GridView1.DataBind();
+            }
         }
     }
 }
