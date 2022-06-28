@@ -124,7 +124,7 @@ namespace ClassAccesoSQL
             return contenedor;
         }
 
-        public Boolean MultiplesConsultasDataSet(string querySql, SqlConnection conAbierta, ref string mensaje, ref DataSet dataset1, string nomConsulta)
+        public Boolean MultiplesConsultasDataSet(string querySql, ref string mensaje, ref DataSet dataset1, string nomConsulta)
         {
             SqlCommand carrito = null;
             SqlDataAdapter trailer = null;

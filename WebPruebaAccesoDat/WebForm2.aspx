@@ -16,6 +16,14 @@
             <asp:GridView ID="GridView1" runat="server">
             </asp:GridView>
         </div>
+        <asp:Button ID="Button2" runat="server" Text="Multiples consultas en un mismo DS" OnClick="Button2_Click" />
+        <br />
+        <br />
+        <asp:ListBox ID="ListBox1" runat="server" Height="197px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="535px"></asp:ListBox>
+        <br />
+        <br />
+        <asp:GridView ID="GridView2" runat="server">
+        </asp:GridView>
     </form>
 </body>
 </html>
