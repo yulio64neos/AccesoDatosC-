@@ -36,6 +36,37 @@ namespace ClassAccesoSQL
             return mensaje;
         }
 
+        public Boolean ModificacionInsegura(string sentenciaSQL, ref string mensaje)
+        {
+            SqlCommand carrito = null;
+            Boolean salida = false;
+            mensaje = AbrirConexion();
+            if (cnglobal != null)
+            {
+                carrito = new SqlCommand();
+                carrito.CommandText = sentenciaSQL;
+                carrito.Connection = cnglobal;
+                try
+                {
+                    carrito.ExecuteNonQuery();
+                    salida = true;
+                    mensaje = "Modificación correcta JUAS JUAS";
+                }
+                catch (Exception ex)
+                {
+                    salida = false;
+                    mensaje = "Error: " + ex.Message;
+                }
+            }
+            else
+            {
+                salida = false;
+                mensaje = "No hay conexión";
+            }
+            return salida;
+
+        }
+
 
         public DataSet ConsultaDS(string querySql, ref string mensaje)
         {

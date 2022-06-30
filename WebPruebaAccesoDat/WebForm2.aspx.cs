@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -19,7 +20,7 @@ namespace WebPruebaAccesoDat
             if (!IsPostBack)
             {
                 //Es la carga de la primera vez
-                objacceso = new miClassAccesoSQL(System.Configuration.ConfigurationManager.ConnectionStrings["conlocal"].ConnectionString);
+                objacceso = new miClassAccesoSQL(System.Configuration.ConfigurationManager.ConnectionStrings["conexionremotalocal"].ConnectionString);
                 Session["objAcc"] = objacceso;
                 contenedor = new DataSet();
                 Session["contenedor"] = contenedor;
@@ -95,6 +96,32 @@ namespace WebPruebaAccesoDat
             }
             objacceso.CerrarConexion();
             Session["contenedor"] = contenedor;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            SqlParameter uno = new SqlParameter("dato", SqlDbType.VarChar, 50);
+            uno.Value = TextBox2.Text;
+            string inserta = "insert into EstadoCivil(Estado) " +
+                "values(@dato);";
+            string m = "";
+            objacceso.ModificacionInsegura(inserta, ref m);
+            objacceso.CerrarConexion();
+            TextBox1.Text = m;
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            DataSet atrapa = null;
+            string h = "";
+            atrapa = objacceso.ConsultaDS("SELECT * FROM EstadoCivil", ref h);
+            objacceso.CerrarConexion();
+            if(atrapa != null)
+            {
+                GridView2.DataSource = atrapa.Tables[0];
+                GridView2.DataBind();
+            }
+            TextBox1.Text = h;
         }
     }
 }

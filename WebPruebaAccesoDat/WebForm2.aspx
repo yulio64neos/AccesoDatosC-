@@ -24,6 +24,17 @@
         <br />
         <asp:GridView ID="GridView2" runat="server">
         </asp:GridView>
+        <br />
+        <br />
+        Estado Civil<asp:TextBox ID="TextBox2" runat="server" Width="307px"></asp:TextBox>
+        <br />
+        <asp:Button ID="Button3" runat="server" Text="Insertar en la BD REMOTA JUAS JUAS" OnClick="Button3_Click" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button4" runat="server" Text="Consultar el estado civil" OnClick="Button4_Click" />
+        <br />
+        <br />
     </form>
 </body>
 </html>
