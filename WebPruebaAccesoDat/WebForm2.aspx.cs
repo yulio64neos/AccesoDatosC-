@@ -57,6 +57,7 @@ namespace WebPruebaAccesoDat
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            Response.Write("<script> alert('Esto es un boton de prueba') </script>");
             string consulta = "";
             string m = "";
             ListBox1.Items.Clear();
@@ -81,7 +82,6 @@ namespace WebPruebaAccesoDat
             {
                 TextBox1.Text = "Error: " + m;
             }
-            objacceso.CerrarConexion();
             objacceso.CerrarConexion();
             consulta = "select * from Medico";
             if (objacceso.MultiplesConsultasDataSet(consulta, ref m, ref contenedor, "medico"))

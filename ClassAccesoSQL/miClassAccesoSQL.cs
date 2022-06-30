@@ -129,7 +129,9 @@ namespace ClassAccesoSQL
             SqlCommand carrito = null;
             SqlDataAdapter trailer = null;
             Boolean salida = false;
+
             mensaje = AbrirConexion();
+
             if (cnglobal == null)
             {
                 mensaje = "No hay conexion a la BD";
